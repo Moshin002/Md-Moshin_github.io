@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Md Mohsin | Cybersecurity Portfolio</title>
+  <meta name="description" content="Portfolio of Md Mohsin — Cyber Security student focused on ethical hacking and practical security tooling." />
+  <style>
+    :root{
+      --bg:#050607;
+      --panel:#0b0f10;
+      --panel-2:#0f1416;
+      --txt:#c8f7c5;
+      --muted:#86c98b;
+      --accent:#00ff88;
+      --accent-2:#1affb5;
+      --danger:#ff4976;
+      --shadow:0 10px 30px rgba(0,255,136,0.08);
+      --glow:0 0 12px rgba(0,255,136,0.45), 0 0 32px rgba(0,255,136,0.15);
+      --scanlines: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.04) 0px,
+        rgba(255,255,255,0.04) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: radial-gradient(1200px 800px at 20% -10%, #0a1f14 0%, transparent 60%),
+                  radial-gradient(1000px 600px at 120% 10%, #082015 0%, transparent 55%),
+                  var(--bg);
+      color:var(--txt);
+      line-height:1.6;
+      letter-spacing: 0.2px;
+    }
+
+    /* Matrix rain backdrop (subtle) */
+    .matrix {
+      position:fixed; inset:0; pointer-events:none; opacity:.08; mix-blend-mode:screen;
+      background-image: linear-gradient(to bottom, transparent, #00ff88 120%), var(--scanlines);
+      -webkit-mask-image: radial-gradient(80% 60% at 50% 40%, black 60%, transparent 100%);
+              mask-image: radial-gradient(80% 60% at 50% 40%, black 60%, transparent 100%);
+      animation: scan 6s linear infinite;
+    }
+    @keyframes scan { 0%{transform:translateY(-5%)} 100%{transform:translateY(5%)} }
+
+    /* Layout */
+    .container{ width:min(1100px, 92%); margin-inline:auto; }
+    .grid{ display:grid; gap:1.2rem }
+
+    /* Header / Nav */
+    header{ position:sticky; top:0; z-index:20; background:linear-gradient(180deg, rgba(5,6,7,.9), rgba(5,6,7,.6) 60%, transparent); backdrop-filter:saturate(120%) blur(6px); border-bottom:1px solid rgba(0,255,136,.08) }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:.8rem 0 }
+    .brand{ display:flex; align-items:center; gap:.7rem; text-decoration:none; color:var(--txt) }
+    .brand .logo{ width:32px; height:32px; display:grid; place-items:center; border-radius:8px; background:conic-gradient(from 0deg, #072d1f, #08472f, #0a6a48, #072d1f); box-shadow: var(--glow); border:1px solid rgba(0,255,136,.3)}
+    .brand b{ letter-spacing:1px }
+
+    /* Hamburger (CSS only) */
+    #nav-toggle{ display:none }
+    .menu{ display:flex; gap:1rem }
+    .menu a{ color:var(--muted); text-decoration:none; padding:.5rem .8rem; border-radius:10px; border:1px solid transparent }
+    .menu a:hover{ color:var(--txt); border-color:rgba(0,255,136,.18); box-shadow: var(--shadow) }
+
+    .hamburger{ display:none; width:42px; height:42px; border:1px solid rgba(0,255,136,.25); border-radius:10px; background:var(--panel); place-items:center }
+    .hamburger span{ width:20px; height:2px; background:var(--accent); display:block; position:relative }
+    .hamburger span::before,.hamburger span::after{ content:""; position:absolute; left:0; width:100%; height:100%; background:var(--accent) }
+    .hamburger span::before{ top:-6px } .hamburger span::after{ top:6px }
+
+    @media (max-width: 860px){
+      .hamburger{ display:grid }
+      .menu{ display:none; position:absolute; right:4%; top:64px; flex-direction:column; background:var(--panel); padding:.6rem; border:1px solid rgba(0,255,136,.25); border-radius:14px; width:min(260px, 92vw) }
+      #nav-toggle:checked ~ .menu{ display:flex }
+    }
+
+    /* Hero */
+    .hero{ padding: 3rem 0 2rem; display:grid; gap:2rem; align-items:center }
+    .hero-card{ display:grid; gap:1.2rem; padding:1.4rem; background:linear-gradient(180deg, rgba(10,20,15,.6), rgba(10,16,14,.4)); border:1px solid rgba(0,255,136,.22); border-radius:18px; box-shadow: var(--shadow) }
+    .kicker{ color:var(--accent-2); text-transform:uppercase; font-size:.8rem; letter-spacing:2px }
+    h1{ margin:0; font-size: clamp(1.8rem, 3.4vw + .6rem, 3rem); line-height:1.15; text-shadow: var(--glow) }
+    .subtitle{ color:var(--muted) }
+    .badges{ display:flex; flex-wrap:wrap; gap:.6rem }
+    .badge{ padding:.35rem .6rem; border:1px solid rgba(0,255,136,.25); border-radius:999px; font-size:.8rem; background:linear-gradient(180deg, rgba(0,255,136,.08), transparent); }
+
+    .terminal{ background:var(--panel-2); border:1px solid rgba(0,255,136,.25); border-radius:16px; overflow:hidden; box-shadow: var(--shadow) }
+    .terminal-bar{ display:flex; align-items:center; gap:.4rem; padding:.4rem .6rem; border-bottom:1px solid rgba(0,255,136,.12); background:linear-gradient(180deg, rgba(3,7,6,.9), rgba(3,7,6,.7)); }
+    .dot{ width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px rgba(0,255,136,.6) }
+    .terminal-body{ padding:1rem; font-size:.95rem }
+    .prompt{ color:var(--accent); }
+    .cursor{ display:inline-block; width:8px; height:1em; background:var(--accent); animation: blink 1s steps(1,end) infinite }
+    @keyframes blink { 50%{ opacity:0 } }
+    code,kbd,pre{ font-family: inherit }
+
+    /* Sections */
+    section{ padding: 2.2rem 0 }
+    .section-title{ font-size:1.2rem; text-transform:uppercase; letter-spacing:2px; color:var(--accent-2) }
+    .card{ background:linear-gradient(180deg, rgba(10,22,17,.55), rgba(9,16,14,.45)); border:1px solid rgba(0,255,136,.18); border-radius:16px; padding:1rem; box-shadow: var(--shadow) }
+
+    .cards{ display:grid; grid-template-columns: repeat(12, 1fr); gap:1rem }
+    .span-4{ grid-column: span 4 }
+    .span-6{ grid-column: span 6 }
+    .span-12{ grid-column: span 12 }
+    @media (max-width: 960px){ .span-4,.span-6{ grid-column: span 12 } }
+
+    .chip{ font-size:.78rem; padding:.25rem .48rem; border-radius:8px; background:rgba(0,255,136,.08); border:1px solid rgba(0,255,136,.2); margin-right:.35rem }
+
+    .timeline{ position:relative; padding-left:1rem }
+    .timeline::before{ content:""; position:absolute; left:.1rem; top:0; bottom:0; width:2px; background:linear-gradient(180deg, rgba(0,255,136,.2), transparent) }
+    .t-item{ position:relative; padding-left:1rem; margin:1rem 0 }
+    .t-item::before{ content:""; position:absolute; left:-.2rem; top:.4rem; width:8px; height:8px; border-radius:50%; background:var(--accent) }
+    .t-head{ display:flex; align-items:center; justify-content:space-between; gap:1rem }
+
+    .footer{ border-top:1px solid rgba(0,255,136,.15); padding:2rem 0; color:var(--muted) }
+    .inline{ display:inline-flex; align-items:center; gap:.5rem }
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+
+    /* Fancy underline */
+    .linkish{ text-decoration:none; color:var(--txt); border-bottom:1px dashed rgba(0,255,136,.35) }
+
+    /* Project grid accents */
+    .project-title{ margin:.2rem 0 .4rem; font-size:1.1rem }
+    .project-meta{ font-size:.85rem; color:var(--muted) }
+
+    /* Contact block */
+    .contact-block{ display:grid; gap:.6rem }
+    .kbd{ display:inline-block; padding:.2rem .4rem; border-radius:6px; background:rgba(0,255,136,.08); border:1px solid rgba(0,255,136,.25) }
+
+  </style>
+</head>
+<body>
+  <div class="matrix" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <span class="logo" aria-hidden="true">
+          <!-- inline shield/lock svg -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2l7 3v6c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V5l7-3z" stroke="var(--accent)"/>
+            <path d="M9.5 11.5a2.5 2.5 0 115 0v2h-5v-2z" stroke="var(--accent)"/>
+          </svg>
+        </span>
+        <b>Md Mohsin</b>
+      </a>
+
+      <input type="checkbox" id="nav-toggle" />
+      <label class="hamburger" for="nav-toggle" aria-label="Toggle navigation"><span></span></label>
+
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="intro">
+      <div class="hero-card">
+        <span class="kicker" id="intro">Ethical Hacker • Cyber Security</span>
+        <h1>Hi, I'm Md Mohsin — I build practical security tools and break things (safely) to make them stronger.</h1>
+        <p class="subtitle">Cyber Security student focused on hands-on offensive & defensive techniques: port scanning, reconnaissance, email hygiene, and honeypots. Two‑time winner in Saghtna (continuous), footballer, and builder of a combined <em>Cyber Recon Toolkit</em>.</p>
+        <div class="badges">
+          <span class="badge">Recon & OSINT</span>
+          <span class="badge">Network Security</span>
+          <span class="badge">Python Tooling</span>
+          <span class="badge">Malware & Honeypots</span>
+        </div>
+      </div>
+
+      <!-- Terminal showcase -->
+      <div class="terminal" aria-label="Demo terminal">
+        <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:.5rem;color:var(--muted)">demo@localhost: ~</span></div>
+        <div class="terminal-body">
+          <div><span class="prompt">$</span> ./recon --target <b>inlighn-tech</b> --modules portscan, email-scrape</div>
+          <div>▶ initializing scanners… ok</div>
+          <div>▶ open ports found: <b>22</b>, <b>80</b>, <b>443</b>, <b>8080</b></div>
+          <div>▶ emails verified: <b>17</b> (catch-all avoided, SMTP verified)</div>
+          <div>▶ report saved: <span class="linkish">/reports/mohsin_recon.html</span></div>
+          <div><span class="prompt">$</span> <span class="cursor" aria-hidden="true"></span><span class="sr-only">cursor</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-t" class="grid">
+      <h2 class="section-title" id="about-t">About</h2>
+      <div class="card">
+        <p>I'm a Cyber Security student passionate about ethical hacking and real-world tooling. I recently completed an internship at <b>Inlighn‑tech</b>, where I focused on reconnaissance workflows and validation of email security posture. I love converting theory into tools and writing clean, well‑documented code that others can run.</p>
+        <p>My long‑term goal: become a security engineer who ships automation that makes orgs measurably safer.</p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-t" class="grid">
+      <h2 class="section-title" id="skills-t">Skills</h2>
+      <div class="cards">
+        <div class="card span-6">
+          <h3>Security & Networking</h3>
+          <p>
+            <span class="chip">Port Scanning</span>
+            <span class="chip">OSINT</span>
+            <span class="chip">Email Validation</span>
+            <span class="chip">Honeypots</span>
+            <span class="chip">Threat Modeling</span>
+            <span class="chip">Linux</span>
+            <span class="chip">Wireshark</span>
+            <span class="chip">Burp Suite</span>
+          </p>
+        </div>
+        <div class="card span-6">
+          <h3>Programming</h3>
+          <p>
+            <span class="chip">Python</span>
+            <span class="chip">Bash</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">Threading</span>
+            <span class="chip">Regex</span>
+          </p>
+        </div>
+        <div class="card span-12">
+          <h3>Highlights</h3>
+          <ul>
+            <li>Combined <b>Port‑Scanner + Email‑Scraper</b> into a single Recon Toolkit with multi‑threading for speed.</li>
+            <li>Built an <b>SMS spam detection</b> proof of concept and a <b>honeypot‑based</b> capture setup.</li>
+            <li>Comfortable explaining concepts in simple, practical language for demos and presentations.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-t" class="grid">
+      <h2 class="section-title" id="projects-t">Projects</h2>
+      <div class="cards">
+        <article class="card span-6">
+          <div class="project-meta">Recon • Python • Networking</div>
+          <h3 class="project-title">Cyber Recon Toolkit</h3>
+          <p>All‑in‑one reconnaissance tool that merges a high‑speed <b>Port‑Scanner</b> and an <b>Email‑Scraper</b> with verification. Scans common/critical ports, validates SMTP without triggering catch‑all, and exports tidy reports.</p>
+          <ul>
+            <li>Threaded scanning for faster results</li>
+            <li>Graceful error handling</li>
+            <li>Clear CLI + HTML report</li>
+          </ul>
+          <p class="project-meta">Stack: Python, sockets, threading, DNS/SMTP</p>
+        </article>
+
+        <article class="card span-6">
+          <div class="project-meta">Networking • Python</div>
+          <h3 class="project-title">Port‑Scanner (Standalone)</h3>
+          <p>Clean CLI scanner with configurable ranges and timeouts. Prints service guesses and handles race conditions using a lock.</p>
+          <pre class="card" aria-label="sample output"><code>open: 22/tcp (ssh)
+open: 80/tcp (http)
+open: 443/tcp (https)</code></pre>
+        </article>
+
+        <article class="card span-6">
+          <div class="project-meta">Email Security • Python</div>
+          <h3 class="project-title">Email‑Scraper + Verifier</h3>
+          <p>Scrapes domains for likely emails and verifies deliverability via SMTP handshake to avoid bounces. Includes dedupe, pattern matching, and basic risk flags.</p>
+        </article>
+
+        <article class="card span-6">
+          <div class="project-meta">Detection • ML (PoC)</div>
+          <h3 class="project-title">SMS Spam Detection</h3>
+          <p>Explored classic features (TF‑IDF, n‑grams) for classifying SMS messages into spam/ham; focused on evaluation and false‑positive control.</p>
+        </article>
+
+        <article class="card span-6">
+          <div class="project-meta">Deception • Infra</div>
+          <h3 class="project-title">Honeypot‑based Capture</h3>
+          <p>Lightweight honeypot to observe brute‑force attempts and basic IOC logging. Used to study attacker behavior and harden services.</p>
+        </article>
+
+        <article class="card span-6">
+          <div class="project-meta">Sports • Leadership</div>
+          <h3 class="project-title">Achievements</h3>
+          <p>Two‑time continuous winner in <b>Saghtna</b>; team player and quick learner. Also a football player — I value discipline and teamwork on and off the field.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" aria-labelledby="exp-t" class="grid">
+      <h2 class="section-title" id="exp-t">Experience</h2>
+      <div class="card timeline">
+        <article class="t-item">
+          <header class="t-head">
+            <b>Cyber Security Intern — Inlighn‑tech</b>
+            <span class="project-meta">Completed recently</span>
+          </header>
+          <ul>
+            <li>Worked on practical tooling: recon pipeline with port scanning + email verification.</li>
+            <li>Tested and documented workflows in simple language; created demo reports.</li>
+            <li>Improved performance via threading; wrote safe defaults & timeouts.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-t" class="grid">
+      <h2 class="section-title" id="contact-t">Contact</h2>
+      <div class="card contact-block">
+        <p>Looking for internships, junior security roles, or collaboration. Internal links only — no external redirects.</p>
+        <p>
+          <span class="kbd">Name</span> Md Mohsin<br/>
+          <span class="kbd">Role</span> Cyber Security student (Ethical Hacking focus)<br/>
+          <span class="kbd">Based</span> India
+        </p>
+        <p style="color:var(--muted)">Tip: Use the navigation at the top to jump to sections. If you need my email or resume, I can share it directly.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year">2025</span> Md Mohsin — Built with <span class="inline" aria-label="lock icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3l6 2v5c0 4.5-3 7.5-6 8-3-.5-6-3.5-6-8V5l6-2z" stroke="var(--accent)"/></svg> HTML & CSS</span></div>
+    </div>
+  </footer>
+
+  <!-- No external scripts. Small inline enhancement to update year without external links or libs. -->
+  <script>
+    (function(){
+      var y = new Date().getFullYear();
+      var el = document.getElementById('year');
+      if(el) el.textContent = y;
+    })();
+  </script>
+</body>
+</html>
+
+</body>
+</html>
